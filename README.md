@@ -13,6 +13,20 @@
 
 ---
 
+### 🔑 Judge Evaluation & Demo Accounts (Live Production)
+
+Judges can instantly log in to the live production deployment at **[studysphere-ruddy.vercel.app/login](https://studysphere-ruddy.vercel.app/login)**:
+
+| Persona | Email | Password | Role & Purpose |
+| :--- | :--- | :--- | :--- |
+| **👨‍⚖️ Official Judge Account** | `judge@studysphere.org` | `Judge2026!` | Pre-joined to all active study groups & channels |
+| **👩‍🎓 Alice Johnson** | `alice.demo@studysphere.org` | `Argon2_Alice_Password!` | Group Owner, Note Creator, Admin |
+| **👨‍🎓 Bob Smith** | `bob.demo@studysphere.org` | `Argon2_Bob_Password!` | Student Collaborator (Test 2-way live chat) |
+
+*(You can also register any new student account at [studysphere-ruddy.vercel.app/register](https://studysphere-ruddy.vercel.app/register) with real-time Neon PostgreSQL persistence).*
+
+---
+
 ## 1. Project Overview & Architecture
 
 StudySphere is a collaborative learning platform where students form study groups, engage in real-time messaging, share verified private PDF resources, and receive AI-assisted conceptual tutoring.
