@@ -3,6 +3,7 @@
 **AI-Powered Collaborative Learning Platform**  
 *Complete System Implementation as per Build Instruction & System Engineering Manual (v1.0)*
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel%20Production-black?logo=vercel)](https://studysphere-ruddy.vercel.app)
 [![CI Pipeline](https://github.com/kanewilliam34/studysphere/actions/workflows/ci.yml/badge.svg)](https://github.com/kanewilliam34/studysphere)
 [![Hackathon Ready: Submission Guide](https://img.shields.io/badge/Hackathon-Submission%20Guide-orange.svg)](HACKATHON.md)
 [![Deploy on Render](https://img.shields.io/badge/Deploy-Render%20Blueprint-blue.svg)](render.yaml)
