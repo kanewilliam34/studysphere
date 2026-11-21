@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: studysphere-db
+    restart: always
+    environment:
+      POSTGRES_USER: studysphere_user
+      POSTGRES_PASSWORD: studysphere_password_change_in_prod
+      POSTGRES_DB: studysphere
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U studysphere_user -d studysphere"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: studysphere-backend
+    restart: always
+    environment:
+      DATABASE_URL: postgresql+psycopg://studysphere_user:studysphere_password_change_in_prod@db:5432/studysphere
+      SECRET_KEY: ${SECRET_KEY:-studysphere-production-secret-signing-key-2026}
+      NEXCONN_APP_KEY: ${NEXCONN_APP_KEY:-studysphere_app_key_placeholder}
+      NEXCONN_APP_SECRET: ${NEXCONN_APP_SECRET:-studysphere_app_secret_placeholder}
+      NEXCONN_BASE_URL: ${NEXCONN_BASE_URL:-https://api.sg-light-api.com}
+      OLLAMA_URL: ${OLLAMA_URL:-http://host.docker.internal:11434/api/chat}
+    volumes:
+      - ../backend/storage/uploads:/app/storage/uploads
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ../apps/web
+      dockerfile: Dockerfile
+    container_name: studysphere-web
+    restart: always
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
+      NEXT_PUBLIC_NEXCONN_APP_KEY: ${NEXCONN_APP_KEY:-studysphere_app_key_placeholder}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: studysphere-caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - backend
+      - web
+
+volumes:
+  postgres_data:
+  caddy_data:
+  caddy_config:

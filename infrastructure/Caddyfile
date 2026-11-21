@@ -1,0 +1,28 @@
+# StudySphere Caddy Reverse Proxy & HTTPS Configuration
+{
+    email admin@studysphere.org
+}
+
+localhost, :80 {
+    # Backend API endpoints
+    handle /api/* {
+        reverse_proxy backend:8000
+    }
+
+    handle /docs* {
+        reverse_proxy backend:8000
+    }
+
+    handle /redoc* {
+        reverse_proxy backend:8000
+    }
+
+    handle /openapi.json {
+        reverse_proxy backend:8000
+    }
+
+    # Next.js Web Frontend
+    handle {
+        reverse_proxy web:3000
+    }
+}
