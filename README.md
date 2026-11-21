@@ -107,7 +107,7 @@ studysphere/
 
 ---
 
-## 4. Nexconn Chat SDK Integration
+## 4. Chat SDK Integration
 
 ### Server-Side Token Generation
 In accordance with Section 7.3 and official Nexconn documentation, the backend signs requests using SHA1:
