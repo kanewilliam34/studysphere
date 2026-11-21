@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.2.1",
     "@nexconn/chat": "^26.5.1",
     "@nexconn/engine": "^26.5.1",
     "clsx": "^2.1.1",
