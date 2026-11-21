@@ -493,8 +493,11 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     headers.set("Content-Type", "application/json");
   }
 
+  // Normalize endpoint to remove trailing slash so Next.js doesn't issue a 308 redirect
+  const normalizedEndpoint = endpoint.length > 1 && endpoint.endsWith("/") ? endpoint.slice(0, -1) : endpoint;
+
   try {
-    const res = await fetch(`${API_BASE}${endpoint}`, {
+    const res = await fetch(`${API_BASE}${normalizedEndpoint}`, {
       ...options,
       headers,
     });
