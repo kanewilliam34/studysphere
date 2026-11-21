@@ -3,7 +3,8 @@
 **AI-Powered Collaborative Learning Platform**  
 *Complete System Implementation as per Build Instruction & System Engineering Manual (v1.0)*
 
-[![CI Pipeline](https://github.com/studysphere/studysphere/actions/workflows/ci.yml/badge.svg)](https://github.com/studysphere/studysphere)
+[![CI Pipeline](https://github.com/kanewilliam34/studysphere/actions/workflows/ci.yml/badge.svg)](https://github.com/kanewilliam34/studysphere)
+[![Hackathon Ready: Submission Guide](https://img.shields.io/badge/Hackathon-Submission%20Guide-orange.svg)](HACKATHON.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Security Baseline: OWASP ASVS](https://img.shields.io/badge/Security-OWASP%20ASVS-green.svg)](docs/security/security_baseline.md)
 
