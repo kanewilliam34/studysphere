@@ -4,6 +4,24 @@
 
 ---
 
+## 🔑 Nexconn Build Challenge Integration Summary
+
+- **Challenge:** Nexconn Build Challenge 2026 (ODYSSEY)
+- **App Name:** StudySphere
+- **Nexconn Packages Used:**
+  - `@nexconn/chat` (Web Core SDK)
+  - `@nexconn/engine` (Web UI & Rendering Engine)
+  - `ai_nexconn_chat_plugin` (Flutter Mobile SDK)
+- **Nexconn App Key:** `studysphere_app_key_placeholder` *(configured in backend & client environments)*
+- **Nexconn SDK Features Implemented:**
+  1. **Group Channels:** Dedicated real-time communication channels for each course and study group (`POST /v4/group-channel/create`, `join`, `quit`).
+  2. **Direct Channels:** 1-on-1 private messaging between study partners.
+  3. **Server-Side Token Authentication:** Secure HMAC-SHA1 signature generation (`sha1(appSecret + nonce + timestamp)`) via `POST /v4/auth/access-token/issue` ensuring client devices never touch the App Secret.
+  4. **Multi-Platform Message Synchronization:** Real-time synchronized chat history and presence across Next.js 15 Web and Flutter Mobile clients.
+  5. **Live Chat UI:** Message streaming, automated scrolling, and typing states rendered via `@nexconn/engine`.
+
+---
+
 ## 📌 Executive Summary & Pitch Hook
 
 Modern students juggle disjointed tools: Discord for messaging (noisy, distracting), Google Drive for notes (disconnected from discussion), and expensive cloud AI subscriptions like ChatGPT (\$20/month) that harvest personal data.
