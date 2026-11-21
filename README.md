@@ -5,6 +5,8 @@
 
 [![CI Pipeline](https://github.com/kanewilliam34/studysphere/actions/workflows/ci.yml/badge.svg)](https://github.com/kanewilliam34/studysphere)
 [![Hackathon Ready: Submission Guide](https://img.shields.io/badge/Hackathon-Submission%20Guide-orange.svg)](HACKATHON.md)
+[![Deploy on Render](https://img.shields.io/badge/Deploy-Render%20Blueprint-blue.svg)](render.yaml)
+[![Documentation: PDF](https://img.shields.io/badge/Documentation-PDF-red.svg)](StudySphere_Project_Documentation.pdf)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Security Baseline: OWASP ASVS](https://img.shields.io/badge/Security-OWASP%20ASVS-green.svg)](docs/security/security_baseline.md)
 

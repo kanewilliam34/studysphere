@@ -1,0 +1,41 @@
+services:
+  # 1. FastAPI Modular Monolith Backend
+  - type: web
+    name: studysphere-backend
+    runtime: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: studysphere-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: NEXCONN_APP_KEY
+        value: studysphere_demo_app_key
+      - key: NEXCONN_APP_SECRET
+        value: studysphere_demo_app_secret
+      - key: NEXCONN_BASE_URL
+        value: https://api.sg-light-api.com
+      - key: OLLAMA_URL
+        value: https://api.sg-light-api.com/ai/fallback
+
+  # 2. Next.js 15 Web Client
+  - type: web
+    name: studysphere-web
+    runtime: node
+    buildCommand: "cd apps/web && npm install && npm run build"
+    startCommand: "cd apps/web && npm run start"
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: studysphere-backend
+          property: host
+
+databases:
+  - name: studysphere-db
+    databaseName: studysphere
+    user: studysphere_user
+    plan: free
